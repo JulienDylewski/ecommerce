@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<head>
+    <title>Notre site web</title>
+</head>
+<body>
+
+<th:block th:include="../static/menu.html"></th:block>
+
+<main>
+    <h1>Panier</h1>
+    <ul>
+        <li th:each="product : ${products}">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.description}"></p>
+            <p th:text="${product.price}"></p>
+            <form th:action="@{/supprimerPanier?code={id}(id=${product.id})}" method="post">
+                <input type="submit" value="Supprimer du panier">
+            </form>
+        </li>
+    </ul>
+    <form sec:authorize="isAuthenticated()" th:action="@{/commander}" method="post">
+        <input type="submit" value="Commander">
+    </form>
+    <a sec:authorize="!isAuthenticated()" href="/login">Se connecter pour commander</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<head>
+    <title>Notre site web</title>
+</head>
+<body>
+
+<th:block th:include="../static/menu.html"></th:block>
+
+<main>
+    <h1>Inscription</h1>
+    <form th:action="@{/inscription}" method="post">
+        <input type="text" name="username" required/>
+        <input type="password" name="password" required/>
+        <input type="submit" value="S'inscrire">
+    </form>
+</main>
+</body>
+</html>

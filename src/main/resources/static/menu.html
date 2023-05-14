@@ -1,0 +1,20 @@
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header class="mdc-top-app-bar mdc-top-app-bar--short">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+            <span class="mdc-top-app-bar__title">Limayrac</span>
+            <a class="mdc-top-app-bar__title" href="/">Accueil</a>
+            <a class="mdc-top-app-bar__title" href="/panier">Panier</a>
+            <a class="mdc-top-app-bar__title" sec:authorize="!isAuthenticated()" href="/login">Se connecter</a>
+            <a class="mdc-top-app-bar__title" sec:authorize="!isAuthenticated()" href="/inscription">Créer un compte</a>
+            <a class="mdc-top-app-bar__title" sec:authorize="isAuthenticated()" href="#">Mon compte</a>
+            <form class="mdc-top-app-bar__title" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+                <input class="mdc-top-app-bar__title" type="submit" value="Deconnexion">
+            </form>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Bookmark this page">bookmark</button>
+        </section>
+    </div>
+</header>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<head>
+    <title>Notre site web</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/../static/style.css}">
+</head>
+<body>
+
+<th:block th:include="../static/menu.html"></th:block>
+
+<main>
+    <h1>Mon compte</h1>
+    <ul class="product-list">
+        <li th:each="commande : ${commandes}" class="product-item">
+            <div class="product-details">
+                <h2 th:text="${commande.id}"></h2>
+                <a th:href="@{/commande/{id}(id=${commande.id})}">Voir commande</a>
+            </div>
+        </li>
+    </ul>
+</main>
+</body>
+</html>
